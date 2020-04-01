@@ -1,0 +1,67 @@
+{
+	"name": "test-runner",
+	"publisher": "lhoworko",
+	"repository": "https://github.com/lhoworko/test-runner",
+	"displayName": "Test Runner",
+	"description": "Easily run tests based on file type",
+	"version": "0.0.3",
+	"engines": {
+		"vscode": "^1.43.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:test-runner.run-file",
+		"onCommand:test-runner.run-line"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"configuration": [
+			{
+				"title": "Test Runner",
+				"properties": {
+					"test-runner.executorMap": {
+						"type": "object",
+						"description": "File types mapped to test command",
+						"default": {
+							"ruby": "rspec",
+							"typescriptreact": "npm run jest"
+						}
+					}
+				}
+			}
+		],
+		"commands": [
+			{
+				"command": "test-runner.run-file",
+				"title": "Run Test File"
+			},
+			{
+				"command": "test-runner.run-line",
+				"title": "Run Test Line"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.1",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.43.0",
+		"eslint": "^6.8.0",
+		"@typescript-eslint/parser": "^2.18.0",
+		"@typescript-eslint/eslint-plugin": "^2.18.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.0.1",
+		"typescript": "^3.7.5",
+		"vscode-test": "^1.3.0"
+	}
+}
