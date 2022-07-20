@@ -36,6 +36,7 @@ function run(filename: string, lineNumber?: number) {
 
 	vscode.commands.executeCommand("workbench.action.terminal.moveToLineEnd");
 	vscode.commands.executeCommand("workbench.action.terminal.deleteToLineStart");
+	vscode.commands.executeCommand("workbench.action.terminal.focus");
 	vscode.commands.executeCommand("workbench.action.terminal.sendSequence", { "text": testString + "\n" });
 	vscode.commands.executeCommand("workbench.action.terminal.scrollToBottom");
 }
